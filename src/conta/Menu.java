@@ -1,5 +1,6 @@
 package conta;
 
+import conta.model.Conta;
 import conta.util.Cores;
 
 import java.util.Scanner;
@@ -7,6 +8,14 @@ import java.util.Scanner;
 public class Menu {
 
     public static void main(String[] args) {
+
+        // Teste da Classe Conta
+        Conta c1 = new Conta(336, 1321, 1, "Samuel", 2000.0f);
+        c1.visualizar();
+        c1.sacar(200);
+        c1.visualizar();
+        c1.depositar(3000.0f);
+        c1.visualizar();
 
         Scanner leia = new Scanner(System.in);
 
