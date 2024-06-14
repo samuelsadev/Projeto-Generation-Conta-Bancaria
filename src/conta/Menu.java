@@ -1,6 +1,8 @@
 package conta;
 
 import conta.model.Conta;
+import conta.model.ContaCorrente;
+import conta.model.ContaPoupanca;
 import conta.util.Cores;
 
 import java.util.Scanner;
@@ -16,6 +18,22 @@ public class Menu {
         c1.visualizar();
         c1.depositar(3000.0f);
         c1.visualizar();
+
+        // Teste da Classe Conta Corrente
+        ContaCorrente cc1 = new ContaCorrente(132, 1321, 1, "DLC ELDEN RING", 0.0f, 5000.0f);
+        cc1.visualizar();
+        cc1.sacar(200.0f);
+        cc1.visualizar();
+        cc1.depositar(2000.0f);
+        cc1.visualizar();
+
+        // Teste da Classe Conta Poupança
+        ContaPoupanca cp1 = new ContaPoupanca(213, 1321, 2, "STEAM", 10000.0f, 10);
+        cp1.visualizar();
+        cp1.sacar(2000.0f);
+        cp1.visualizar();
+        cp1.depositar(3000.0f);
+        cp1.visualizar();
 
         Scanner leia = new Scanner(System.in);
 
