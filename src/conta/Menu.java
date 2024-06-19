@@ -16,9 +16,9 @@ public class Menu {
 
         Scanner scanner = new Scanner(System.in);
 
-        int op, numero, agencia, tipo, aniversario;
+        int op, numero, agencia, tipo, aniversario, numeroDestino;
         String titular;
-        float saldo, limite;
+        float saldo, limite, valor;
 
         ContaCorrente cc1 = new ContaCorrente(contas.gerarNumero(), 30, 1,"ba", 450, 450);
         contas.cadastra(cc1);
@@ -147,17 +147,40 @@ public class Menu {
                     break;
                 case 6:
                     System.out.println(Cores.TEXT_WHITE + "Saque\n\n");
+                    System.out.println("Digite o numero da conta: ");
+                    numero = scanner.nextInt();
 
+                    do {
+                        System.out.println("Digite o valor do saque R$: ");
+                        valor = scanner.nextFloat();
+                    } while (valor <= 0);
+                    contas.sacar(numero, valor);
                     keyPress();
                     break;
                 case 7:
                     System.out.println(Cores.TEXT_WHITE + "Depósito\n\n");
+                    System.out.println("Digite o número da conta: ");
+                    numero = scanner.nextInt();
 
+                    do {
+                        System.out.println("Digite o valor do depósito R$: ");
+                        valor = scanner.nextFloat();
+                    } while (valor <= 0);
+                    contas.depositar(numero, valor);
                     keyPress();
                     break;
                 case 8:
                     System.out.println(Cores.TEXT_WHITE + "Transferência entre Contas\n\n");
+                    System.out.println("Digite o numero da conta de origem: ");
+                    numero = scanner.nextInt();
+                    System.out.println("Digite o numero da conta destino: ");
+                    numeroDestino = scanner.nextInt();
 
+                    do {
+                        System.out.println("Digite o valor da transferência R$: ");
+                        valor = scanner.nextFloat();
+                    } while (valor <= 0);
+                    contas.transferir(numero, numeroDestino, valor);
                     keyPress();
                     break;
                 default:
