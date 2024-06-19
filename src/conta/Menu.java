@@ -1,10 +1,7 @@
 package conta;
 
-import conta.model.Conta;
-import conta.model.ContaCorrente;
-import conta.model.ContaPoupanca;
+import conta.controller.ContaController;
 import conta.util.Cores;
-
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -13,27 +10,13 @@ public class Menu {
 
     public static void main(String[] args) {
 
-
-        // Teste da Classe Conta Corrente
-        ContaCorrente cc1 = new ContaCorrente(132, 1321, 1, "DLC ELDEN RING", 0.0f, 5000.0f);
-        cc1.visualizar();
-        cc1.sacar(200.0f);
-        cc1.visualizar();
-        cc1.depositar(2000.0f);
-        cc1.visualizar();
-
-        // Teste da Classe Conta Poupança
-        ContaPoupanca cp1 = new ContaPoupanca(213, 1321, 2, "STEAM", 10000.0f, 10);
-        cp1.visualizar();
-        cp1.sacar(2000.0f);
-        cp1.visualizar();
-        cp1.depositar(3000.0f);
-        cp1.visualizar();
+        ContaController contas = new ContaController();
 
         Scanner scanner = new Scanner(System.in);
 
-
-        int op;
+        int op, numero, agencia, tipo, aniversario;
+        String titular;
+        float saldo, limite;
 
         while (true) {
 
@@ -77,12 +60,23 @@ public class Menu {
             switch (op) {
                 case 1:
                     System.out.println(Cores.TEXT_WHITE + "Criar Conta\n\n");
+                    System.out.println("Digite o número da agência: ");
+                    agencia = scanner.nextInt();
+                    System.out.println("Digite o nome do titular: ");
+                    scanner.skip("\\R");
+                    titular = scanner.nextLine();
 
+                    do {
+                        System.out.println("Digite o tipo da conta [1]-Conta Corrente [2]-Conta Poupança: ");
+                        tipo = scanner.nextInt();
+                    } while (tipo < 1 && tipo > 2);
+                    System.out.println("Digite o saldo da conta R$: ");
+                    saldo = scanner.nextFloat();
                     keyPress();
                     break;
                 case 2:
                     System.out.println(Cores.TEXT_WHITE + "Listar todas as Contas\n\n");
-
+                    contas.listarTodas();
                     keyPress();
                     break;
                 case 3:
